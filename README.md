@@ -36,7 +36,7 @@
 
 ### Исходный код
 
-https://github.com/USERNAME/museum-system
+https://ginerus.github.io/museum-site
 
 ### Последний релиз
 
