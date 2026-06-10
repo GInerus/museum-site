@@ -5,9 +5,9 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
     background: radial-gradient(circle at top, #1e293b, #0f172a);
     color: #e5e7eb;
+    font-family: 'Inter', sans-serif;
 }
 
 /* HERO - с анимированным градиентом (основные стили, градиент и анимация добавлены через inline style в index.html) */
@@ -201,3 +201,202 @@ footer {
     font-size: 30px;
     cursor: pointer;
 }
+
+.hero {
+    background: linear-gradient(135deg, #4A90E2, #ffffff, #4A90E2, #e6f0ff, #4A90E2);
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite;
+    position: relative;
+    
+    /* НОВОЕ: hero на весь экран */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Лёгкое затемнение для читаемости белого текста на светлом градиенте */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 0;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Немного улучшаем читаемость заголовка на светлом фоне */
+.hero h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero .subtitle {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* Кнопки */
+.hero .btn {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Добавляем стиль для третьей кнопки (сервер) */
+.btn.server {
+    background: #10b981;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn.server:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+/* Немного увеличим отступы для первой секции после fullscreen hero */
+.section:first-of-type {
+    margin-top: 50px;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+        padding: 20px;
+    }
+    
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+    }
+}
+
+/* Мобильная адаптация галереи и модального окна */
+@media (max-width: 768px) {
+    /* Кнопки навигации — побольше и удобнее для пальцев */
+    .modal-prev,
+    .modal-next {
+        font-size: 32px;
+        padding: 12px 16px;
+        background: rgba(0,0,0,0.6);
+        /* Увеличиваем область нажатия */
+        min-width: 50px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Отступы от краёв побольше, чтобы не нажимать мимо */
+    .modal-prev {
+        left: 8px;
+    }
+    
+    .modal-next {
+        right: 8px;
+    }
+    
+    /* Крестик закрытия тоже увеличим */
+    .close {
+        font-size: 40px;
+        top: 15px;
+        right: 20px;
+        padding: 5px 10px;
+    }
+    
+    /* Изображение в модалке — на весь экран с отступами */
+    .modal-img {
+        max-width: 95%;
+        max-height: 85%;
+    }
+    
+    /* Галерея скриншотов — вертикальная прокрутка удобнее */
+    .gallery {
+        gap: 12px;
+        justify-content: center;
+    }
+    
+    .gallery img {
+        height: 150px;
+        width: auto;
+    }
+
+        .modal-prev,
+    .modal-next {
+        /* Делаем полупрозрачными, чтобы не загораживали картинку */
+        opacity: 0.7;
+    }
+    
+    .modal-prev:hover,
+    .modal-next:hover {
+        opacity: 1;
+    }
+}
+
+/* Кнопки навигации в модальном окне */
+.modal-prev,
+.modal-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 12px 18px;
+    border-radius: 8px;
+    transition: 0.2s;
+    z-index: 10;
+}
+
+.modal-prev {
+    left: 20px;
+}
+
+.modal-next {
+    right: 20px;
+}
+
+.modal-prev:hover,
+.modal-next:hover {
+    background: rgba(0,0,0,0.8);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .modal-prev,
+    .modal-next {
+        font-size: 28px;
+        padding: 8px 12px;
+    }
+}
+
